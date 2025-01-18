@@ -1,22 +1,23 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { Player } from '../App'
 
 type ScoresProps = {
-    score1:number,
-    score2:number
+  player1:Player,
+  player2:Player
 }
 
 const Scores = ({
-    score1,
-    score2
+    player1,
+    player2
 }:ScoresProps) => {
   return (
     <View style={styles.scoresContainer}>
       <Text style={styles.scoresText}>
-        Player1: {score1}
+        {player1.name} : {player1.score}
       </Text>
       <Text style={styles.scoresText}>
-        Player2: {score2}
+        {player2.name} : {player2.score}
       </Text>
     </View>
   )
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     },
     scoresText:{
         color:'#fff',
-        fontSize:24
+        fontSize:24,
+        fontWeight:'500'
     }
 })

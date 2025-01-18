@@ -1,18 +1,33 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
 
 type CellProps ={
-    value:String
+    value:String,
+    right?:boolean,
+    left?:boolean,
+    top?:boolean,
+    bottom?:boolean,
+    makeMove:()=>void
 }
 const Cell = ({
-    value
+    value,
+    right,
+    left,
+    bottom,
+    top,
+    makeMove
 }:CellProps) => {
     return (
-        <View style={styles.cellContaienr}>
-            <Text style={styles.cellText}>
-                {value}
-            </Text>
+        <View style={[styles.cellContaienr,top && styles.topBorder,right && styles.rightBorder,left && styles.leftBorder,bottom && styles.bottomBorder]}>
+            <TouchableOpacity
+                style={styles.cellContaienr}
+                onPress={()=>makeMove()}
+            >
+                <Text style={[styles.cellText]}>
+                    {value}
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -24,12 +39,27 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems:'center',
-        height:80,
-        width:80,
     },
     cellText:{
         color:'#fff',
         fontSize:64,
-        fontWeight:'500'
+        fontWeight:'500',
+        padding:24
+    },
+    rightBorder:{
+        borderRightColor:'#fff',
+        borderRightWidth:4,
+    },
+    leftBorder:{
+        borderLeftColor:'#fff',
+        borderLeftWidth:4
+    },
+    topBorder:{
+        borderTopColor:'#fff',
+        borderTopWidth:4
+    },
+    bottomBorder:{
+        borderBottomColor:'#fff',
+        borderBottomWidth:4,
     }
 })

@@ -16,12 +16,12 @@ const Actions = ({
 }:ActionsProps) => {
   return (
     <View style={styles.actionsContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={()=>action1()}>
             <Text style={styles.btnText}>
                 {label1}
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={()=>action2()}>
             <Text style={styles.btnText}>
                 {label2}
             </Text>
@@ -44,10 +44,11 @@ const styles = StyleSheet.create({
         paddingHorizontal:32,
         borderColor:'#fff',
         borderWidth:2,
-        borderRadius:15,
+        borderRadius:15
     },
     btnText:{
         color:'#fff',
-        fontSize:24
+        fontSize:24,
+        fontWeight:'600'
     }
 })
